@@ -41,27 +41,17 @@ export default class APP extends Component {
             <Text style={styles.text}>Email</Text>
             <Text style={styles.text}>{this.state.Email}</Text>
           </View>
-          <View style={styles.detailShow}>
-            <Text style={styles.text}>Phone</Text>
-            <Text style={styles.text}>{this.state.Phone}</Text>
-          </View>
+          
           <View style={styles.detailShow}>
             <Text style={styles.text}>Company</Text>
             <Text style={styles.text}>{this.state.name}</Text>
           </View>
-          <View style={styles.detailShow}>
-            <Text style={styles.text}>Designation</Text>
-            <Text style={styles.text}>{this.state.Designation}</Text>
-          </View>
-          <View style={styles.detailShow}>
-            <Text style={styles.text}>Profile</Text>
-            <Text style={styles.text}>{this.state.profile}</Text>
-          </View>
+
         </View>
       );
     }
   }
-
+  
   render() {
     return (
       <ScrollView style={{ flex: 1 }}>
