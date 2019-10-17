@@ -5,7 +5,8 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-  StyleSheet
+  StyleSheet,
+  Alert
 } from 'react-native';
 
 
@@ -16,8 +17,42 @@ export default class APP extends Component {
       name: "",
       Email: "",
       Company: "",
+      isSubmitPressed:false,
     };
+    
   }
+
+
+  validateValue = () =>{
+      this.setState(this.state.isSubmitPressed,true);   
+    if(this.state.name == ""){
+      alert("Enter Name");
+    }
+    else if(this.state.Email == ""){
+      alert("Enter Email");
+    }
+    else if(this.state.Company == ""){
+      alert("Enter Company Name");
+    }
+
+  }
+
+
+  renderDetails = () =>{
+             if(this.state.isSubmitPressed){
+               return(
+                 <View>
+                   <Text>{this.state.name}</Text>
+                   <Text>{this.state.Company}</Text>
+                   <Text>{this.state.Email}</Text>
+                 </View>
+               );
+             }
+  }
+
+
+
+
 
 
 
@@ -25,12 +60,13 @@ export default class APP extends Component {
   render() {
     return (
       <View style={{ flex: 1 ,backgroundColor: "#1799bf",}}> 
-      <Text>User Detail's</Text>
+      
       <ScrollView >
         <View style={styles.mainView}>
+        <Text style = {{alignSelf:"center",fontSize:30,marginBottom:15,marginTop:10}}>User Detail's</Text>
           <View>
             <TextInput placeholder={"Name"} style={styles.textInputStyle}
-              onChangeText={(text) => this.setState({ name: text })}
+              onChangeText={(nameInput) => this.setState({ name: nameInput })}
               
 
             ></TextInput>
@@ -49,10 +85,10 @@ export default class APP extends Component {
           </View>
           
 
-          <TouchableOpacity style={styles.button} onPress={this.onPressSubmit} >
+          <TouchableOpacity style={styles.button} onPress={this.validateValue} >
             <Text style={styles.submitButton}>Submit</Text>
           </TouchableOpacity>
-
+          {this.renderDetails}
         </View>
       </ScrollView>
       </View>
