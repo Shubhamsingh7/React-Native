@@ -6,91 +6,161 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
-  Alert
+  Alert,
+  FlatList
 } from 'react-native';
+import { italic } from "colorette";
+
 
 
 export default class APP extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       Email: "",
       Company: "",
-      isSubmitPressed:false,
+      isSubmitPressed: false,
+      empData: [],
+      isEmpty:true,
     };
-    
+
   }
 
 
-  validateValue = () =>{
-      this.setState(this.state.isSubmitPressed,true);   
-    if(this.state.name == ""){
+
+
+  validateValue = () => {
+    let isValidate = true;
+    if (this.state.name == "") {
       alert("Enter Name");
+      isValidate = false;
+
     }
-    else if(this.state.Email == ""){
+    else if (this.state.Email == "") {
       alert("Enter Email");
+      isValidate = false;
     }
-    else if(this.state.Company == ""){
+    else if (this.state.Company == "") {
       alert("Enter Company Name");
+      isValidate = false;
+    }
+    if (isValidate) {
+      this.setState({ isSubmitPressed: true });
+    }
+    this.setState({
+      isEmpty:false
+    })
+    
+    let object = {
+      id: new Date().getTime(),
+      name: this.state.name,
+      email: this.state.Email,
+      company: this.state.Company
     }
 
+    let empData = this.state.empData;
+
+    empData.push(object);
+
+    this.setState({ empData: empData });
+    this.setState({name:""});
+    this.setState({Email:""});
+    this.setState({Company:""});
+    this.setState({
+      isEmpty:true
+    })
+
   }
 
 
-  renderDetails = () =>{
-             if(this.state.isSubmitPressed){
-               return(
-                 <View>
-                   <Text>{this.state.name}</Text>
-                   <Text>{this.state.Company}</Text>
-                   <Text>{this.state.Email}</Text>
-                 </View>
-               );
-             }
+
+  renderDetails = ({ item }) => {
+    if(this.state.isEmpty){
+      return(
+        <View></View>
+      );
+    }
+    
+    return (
+      <View style={styles.detailShow}>
+        <Text style={{
+          fontSize: 25,
+          margin: 5,
+          alignSelf: "center",
+          fontWeight: "500",
+        }}>{item.name}</Text>
+        <Text
+          style={{
+            fontSize: 15,
+            margin: 5,
+            alignSelf: "flex-start"
+          }}
+        >{item.email}</Text>
+        <Text
+          style={{
+            fontSize: 20,
+            margin: 5,
+            alignSelf: "flex-end",
+            fontStyle: "italic",
+          }}
+        >{item.company}</Text>
+      </View>
+    );
   }
 
 
 
 
-
-
-
-  
   render() {
     return (
-      <View style={{ flex: 1 ,backgroundColor: "#1799bf",}}> 
-      
-      <ScrollView >
-        <View style={styles.mainView}>
-        <Text style = {{alignSelf:"center",fontSize:30,marginBottom:15,marginTop:10}}>User Detail's</Text>
-          <View>
-            <TextInput placeholder={"Name"} style={styles.textInputStyle}
-              onChangeText={(nameInput) => this.setState({ name: nameInput })}
+      <View style={{ flex: 1, backgroundColor: "#1799bf", }}>
+
+        <ScrollView >
+          <View style={styles.mainView}>
+            <Text style={{ alignSelf: "center", fontSize: 30, marginBottom: 15, marginTop: 10 }}>User Detail's</Text>
+            <View>
+              <TextInput placeholder={"Name"} style={styles.textInputStyle}
+                onChangeText={(nameInput) => this.setState({ name: nameInput })}
+
+
+              ></TextInput>
+            </View>
+
+            <View>
+              <TextInput placeholder={"Email"} style={styles.textInputStyle}
+
+                onChangeText={(text) => this.setState({ Email: text })}></TextInput>
+            </View>
+
+            <View>
+              <TextInput placeholder={"Company"} style={styles.textInputStyle}
+
+                onChangeText={(text) => this.setState({ Company: text })}></TextInput>
+            </View>
+
+
+            <TouchableOpacity style={styles.button} onPress={this.validateValue} >
+              <Text style={styles.submitButton}>Submit</Text>
+            </TouchableOpacity>
+
+
+
+            <FlatList
+              style={{ flex: 1}}
+              data={this.state.empData}
+              renderItem={
               
-
-            ></TextInput>
-          </View>
-
-          <View>
-            <TextInput placeholder={"Email"} style={styles.textInputStyle} 
+                  this.renderDetails
+                
+                
+              }
+            />
             
-            onChangeText={(text) => this.setState({ Email: text })}></TextInput>
-          </View>
-          
-          <View>
-            <TextInput placeholder={"Company"} style={styles.textInputStyle} 
-            
-            onChangeText={(text) => this.setState({ Company: text })}></TextInput>
-          </View>
-          
 
-          <TouchableOpacity style={styles.button} onPress={this.validateValue} >
-            <Text style={styles.submitButton}>Submit</Text>
-          </TouchableOpacity>
-          {this.renderDetails}
-        </View>
-      </ScrollView>
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -117,8 +187,8 @@ const styles = StyleSheet.create(
       fontSize: 20,
     },
     submitButton: {
-      fontSize: 30,
-      fontStyle: "italic",
+      fontSize: 15,
+
       alignSelf: "center",
 
 
@@ -133,12 +203,28 @@ const styles = StyleSheet.create(
       marginRight: 15,
     },
     detailShow: {
-      flexDirection: "row",
+      flexDirection: "column",
+      alignContent: "center",
+      padding: 20,
       justifyContent: "space-between",
-    },text:{
-      fontSize:20,
-      marginLeft:10,
-      marginRight:10,
+      margin: 15,
+      borderRadius: 10,
+      backgroundColor: "white",
+      shadowColor: "black",
+      shadowOffset: {
+        width: 0,
+        height: 6,
+      },
+      shadowOpacity: 0.6,
+      shadowRadius: 7.49,
+
+      elevation: 12,
+
+    },
+    text: {
+      fontSize: 20,
+      marginLeft: 10,
+      marginRight: 10,
 
     }
 
