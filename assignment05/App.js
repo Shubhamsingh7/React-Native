@@ -10,6 +10,7 @@ import {
   FlatList
 } from 'react-native';
 import { italic } from "colorette";
+import { url } from "inspector";
 
 
 
@@ -85,6 +86,7 @@ export default class APP extends Component {
     
     return (
       <View style={styles.detailShow}>
+        <Image source = {url:""}></Image>
         <Text style={{
           fontSize: 25,
           margin: 5,
