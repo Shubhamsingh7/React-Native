@@ -7,10 +7,9 @@ import {
   ScrollView,
   StyleSheet,
   Alert,
-  FlatList
+  FlatList,
+  Image
 } from 'react-native';
-import { italic } from "colorette";
-import { url } from "inspector";
 
 
 
@@ -24,11 +23,22 @@ export default class APP extends Component {
       Company: "",
       isSubmitPressed: false,
       empData: [],
-      isEmpty:true,
+      counter:0,
+      isEmpty: true,
     };
 
   }
 
+
+remove = (counter,arr)=>{
+  var tempArr = []
+  for(let i= 0;i<this.state.empData.length;i++){
+    if(i != counter){
+      tempArr.push(this.state.empData[i]);
+    }
+  }
+  this.state.empData=tempArr;
+}
 
 
 
@@ -50,10 +60,9 @@ export default class APP extends Component {
     if (isValidate) {
       this.setState({ isSubmitPressed: true });
     }
-    this.setState({
-      isEmpty:false
-    })
-    
+    this.setState( ()=> this.state.isEmpty=false
+    )
+
     let object = {
       id: new Date().getTime(),
       name: this.state.name,
@@ -65,28 +74,29 @@ export default class APP extends Component {
 
     empData.push(object);
 
-    this.setState({ empData: empData });
-    this.setState({name:""});
-    this.setState({Email:""});
-    this.setState({Company:""});
-    this.setState({
-      isEmpty:true
-    })
 
   }
 
 
 
   renderDetails = ({ item }) => {
-    if(this.state.isEmpty){
-      return(
+    if (this.state.isEmpty) {
+      return (
         <View></View>
       );
     }
-    
+else{
     return (
       <View style={styles.detailShow}>
-        <Image source = {url:""}></Image>
+        <View style = {{flexDirection:"row",justifyContent:"space-between"}}>
+        <TouchableOpacity onPress={this.validateValue} >
+        <Image source={require('./assests/edit.png')} style ={ {height:28,width:28}} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.validateValue} >
+        <Image source={require('./assests/delete.png')} style ={ {height:28,width:28}} />
+        </TouchableOpacity>
+        </View>
+        
         <Text style={{
           fontSize: 25,
           margin: 5,
@@ -111,8 +121,7 @@ export default class APP extends Component {
       </View>
     );
   }
-
-
+  }
 
 
   render() {
@@ -150,21 +159,29 @@ export default class APP extends Component {
 
 
             <FlatList
-              style={{ flex: 1}}
+              style={{ flex: 1 }}
               data={this.state.empData}
               renderItem={
-              
-                  this.renderDetails
-                
-                
+
+                this.renderDetails
+
+
               }
             />
-            
+
 
           </View>
         </ScrollView>
       </View>
     );
+
+    this.setState({ empData: empData });
+    this.setState({ name: "" });
+    this.setState({ Email: "" });
+    this.setState({ Company: "" });
+    this.setState({
+      isEmpty: true
+    })
   }
 }
 
@@ -190,7 +207,6 @@ const styles = StyleSheet.create(
     },
     submitButton: {
       fontSize: 15,
-
       alignSelf: "center",
 
 
