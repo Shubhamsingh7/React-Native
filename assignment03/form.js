@@ -7,8 +7,6 @@ import {
         StyleSheet,
         TouchableOpacity,
 } from 'react-native';
-import { bold } from "ansi-colors";
-import { italic } from "colorette";
 
 
 export default class Form extends React.Component {
@@ -19,7 +17,6 @@ export default class Form extends React.Component {
                                         <Text style={styles.headerText}>First Sample</Text>
                                 </View>
                                 <View style={{ flexDirection: "column", justifyContent: "space-around", }}>
-
                                         <View style={{ flexDirection: "column", justifyContent: "space-around", height: 150 }}>
                                                 <View style={styles.form}>
                                                         <Text style={styles.formText}>Name</Text>
@@ -33,7 +30,6 @@ export default class Form extends React.Component {
                                                 </View>
                                         </View>
                                         <View>
-
                                                 <TouchableOpacity style={styles.touchableBuuton}>
                                                         <Text style={styles.formText}>Login</Text>
                                                 </TouchableOpacity>
@@ -43,8 +39,6 @@ export default class Form extends React.Component {
                 );
         }
 }
-
-
 const styles = StyleSheet.create(
         {
                 header: {
@@ -59,18 +53,15 @@ const styles = StyleSheet.create(
                         fontStyle: "italic",
                 },
                 form: {
-
                         backgroundColor: "white",
                         flexDirection: "row",
                         justifyContent: "space-between",
                         marginLeft: 10,
                         marginRight: 10,
-
                 },
                 formText: {
                         fontSize: 20,
                         fontWeight: "bold",
-
                 },
                 formTextInput: {
                         backgroundColor: "#cce0df",
@@ -82,15 +73,12 @@ const styles = StyleSheet.create(
                 },
                 touchableBuuton: {
                         backgroundColor: "green",
-                        // margin:40,
                         paddingLeft: 130,
                         paddingRight: 130,
                         borderRadius: 25,
                         paddingBottom: 15,
                         paddingTop: 15,
                         alignSelf: "center",
-
                 }
-
         }
 );
