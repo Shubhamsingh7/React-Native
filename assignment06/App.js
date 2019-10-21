@@ -1,114 +1,132 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
+import React,{Component} from "react";
+import { 
   View,
   Text,
-  StatusBar,
-} from 'react-native';
+  TextInput,
+  FlatList,
+  StyleSheet,
+  Image,
+  
+} from "react-native";
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import Video from 'react-native-video';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+
+
+
+
+
+export default class Collection extends Component{
+  
+  renderCollectionCell = ({item}) =>{
+    // if(item.id == 0){
+    //   return(
+        
+    //     <Video source={require('./assets/video.mp4')}   // Can be a URL or a localfile.
+    //      ref={(ref) => {
+    //        this.player = ref
+    //      }}                                      // Store reference
+    //      onBuffer={this.onBuffer}                // Callback when remote video is buffering
+    //      onEnd={this.onEnd}                      // Callback when playback finishes
+    //      onError={this.videoError}               // Callback when video cannot be loaded
+    //       />
+      
+    //   );
+    // }
+    // else{
+      return(
+        <View>
+          <Image
+          source = {{uri:item.url}}
+          style = {styles.imageView}
+          resizeMode = {"cover"}
+          
+          />
+        </View>
+      );
+    
+
+
+  }
+
+
+  data = [
+    {
+      id:1,
+      url:"https://images.pexels.com/photos/2983461/pexels-photo-2983461.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    },
+    {
+      id:2,
+      url:"https://images.pexels.com/photos/1899631/pexels-photo-1899631.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    },
+    {
+      id:3,
+      url:"https://images.pexels.com/photos/1549196/pexels-photo-1549196.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    },
+    {
+      id:4,
+      url:"https://images.pexels.com/photos/1123567/pexels-photo-1123567.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    },
+    {
+      id:5,
+      url:"https://images.pexels.com/photos/2265247/pexels-photo-2265247.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    },
+    {
+      id:6,
+      url:"https://images.pexels.com/photos/2832023/pexels-photo-2832023.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    },
+    {
+      id:7,
+      url:"https://images.pexels.com/photos/2115578/pexels-photo-2115578.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    },
+    {
+      id:8,
+      url:"https://images.pexels.com/photos/2929211/pexels-photo-2929211.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    },
+    {
+      id:9,
+      url:"https://images.pexels.com/photos/2575280/pexels-photo-2575280.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    },
+    {
+      id:10,
+      url:"https://images.pexels.com/photos/2387872/pexels-photo-2387872.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    }
+   ]
+render(){
+  return(
+    <View style = {styles.superView}>
+      <FlatList
+      data = {this.data}
+      renderItem = {this.renderCollectionCell}
+      numColumns = {3}
+
+      >
+
+        
+      </FlatList>
+    </View>
+
   );
-};
+}
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+}
 
-export default App;
+
+styles = StyleSheet.create(
+  {
+    imageView:{
+      height:110,
+      width:110,
+      margin:5,
+      borderRadius:10
+    },
+    superView:{
+      flex:1,
+      paddingTop:50,
+      // flexDirection:"row",
+      alignItems:"center",
+      backgroundColor:"#cfe8e4",
+    },
+  }
+  
+)
