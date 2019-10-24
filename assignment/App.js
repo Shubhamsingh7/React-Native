@@ -2,6 +2,7 @@
 
 import {Card} from './card';
 import React, {Component} from 'react';
+import UserDataArray from './model';
 import {
   Text,
   StyleSheet,
@@ -20,10 +21,10 @@ export default class MainClass extends Component {
     };
   }
   componentDidMount() {
-    return fetch('https://randomuser.me/api/?results=50')
+    return fetch('https://randomuser.me/api/?results=100')
       .then(response => response.json())
       .then(responseJson => {
-        
+        const a = new UserDataArray(responseJson.results);
         this.setState({
           userDataArray: responseJson.results,
           isLoading: false,
@@ -38,15 +39,18 @@ export default class MainClass extends Component {
   render() {
     if (this.state.isLoading) {
       return (
-        <View style={{paddingTop:100}}>
-          
+        <SafeAreaView>
+        <Text style={styles.headingStyle}>Random User</Text>
+        <View style={{paddingTop: 100}}>
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
+        </SafeAreaView>
       );
     } else {
       return (
         <SafeAreaView>
-          <Text style={styles.headingStyle}>Random User</Text>
+        <Text style={styles.headingStyle}>Random User</Text>
+          
           <FlatList
             data={this.state.userDataArray}
             renderItem={({item}) => {

@@ -6,46 +6,52 @@ import {
   FlatList,
   StyleSheet,
   Image,
+  TouchableOpacity
   
 } from "react-native";
 
-import Video from 'react-native-video';
-
-
-
-
+// import Video from 'react-native-video';
 
 
 export default class Collection extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      modal: false,
+      itemUrl:""
+    }
+  }
+
+  showModal = (imageUrl)=>{
+    this.setState({modal: !this.state.modal, itemUrl: !this.state.modal ? imageUrl : ""})
+  }
+  expandImage = (imageUrl)=>{
+    return(
+     
+      <View>
+        <Image
+        source = {{uri:this.state.itemUrl}}
+        // style = {styles.expandImageView}
+        resizeMode = {"cover"}
+        />
+      </View>
+    );
+  }
   
   renderCollectionCell = ({item}) =>{
-    // if(item.id == 0){
-    //   return(
-        
-    //     <Video source={require('./assets/video.mp4')}   // Can be a URL or a localfile.
-    //      ref={(ref) => {
-    //        this.player = ref
-    //      }}                                      // Store reference
-    //      onBuffer={this.onBuffer}                // Callback when remote video is buffering
-    //      onEnd={this.onEnd}                      // Callback when playback finishes
-    //      onError={this.videoError}               // Callback when video cannot be loaded
-    //       />
-      
-    //   );
-    // }
-    // else{
       return(
         <View>
+          <TouchableOpacity onPress = {()=>this.showModal(item.url)}>
           <Image
           source = {{uri:item.url}}
           style = {styles.imageView}
           resizeMode = {"cover"}
           
           />
+          </TouchableOpacity>
+          
         </View>
       );
-    
-
 
   }
 
@@ -99,11 +105,14 @@ render(){
       data = {this.data}
       renderItem = {this.renderCollectionCell}
       numColumns = {3}
-
       >
-
-        
       </FlatList>
+      <View style = {styles.expandImageView}>
+      {
+         this.state.modal && this.expandImage()
+      }
+      </View>
+      
     </View>
 
   );
@@ -127,6 +136,11 @@ styles = StyleSheet.create(
       alignItems:"center",
       backgroundColor:"#cfe8e4",
     },
+    expandImageView:{
+      height:200,
+      width:200,
+      zIndex:100,
+    }
   }
   
 )
