@@ -1,13 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
-import {Text, StyleSheet, View, Image, TouchableOpacity} from 'react-native';
+import React from "react";
+import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
 
 export const Card = function(props) {
-  state = {isModelVisible: false};
+  state = { isModelVisible: false };
 
   showModelView = () => {
     this.setState({
-      isModelVisible: true,
+      isModelVisible: true
     });
   };
   return (
@@ -16,13 +16,13 @@ export const Card = function(props) {
         <View style={styles.mainView}>
           <View>
             <Image
-              source={{uri: props.list.picture.large}}
+              source={{ uri: props.list.picture.large }}
               style={styles.imageView}
             />
           </View>
-          <View style={{justifyContent: 'space-around'}}>
+          <View style={{ justifyContent: "space-around" }}>
             <Text style={styles.nameText}>
-              {props.list.name.title} {props.list.name.first}{' '}
+              {props.list.name.title} {props.list.name.first}{" "}
               {props.list.name.last}
             </Text>
             <Text style={styles.mobileText}>{props.list.cell}</Text>
@@ -30,7 +30,7 @@ export const Card = function(props) {
           </View>
         </View>
         <View>
-          <Text style={{margin: 15, fontSize: 20, fontStyle: 'italic'}}>
+          <Text style={{ margin: 15, fontSize: 20, fontStyle: "italic" }}>
             {props.list.email}
           </Text>
         </View>
@@ -44,35 +44,35 @@ const styles = StyleSheet.create({
     margin: 15,
     padding: 15,
     borderRadius: 10,
-    shadowColor: '#000',
-    justifyContent: 'space-around',
-    backgroundColor: '#ebeff0',
+    shadowColor: "#000",
+    justifyContent: "space-around",
+    backgroundColor: "#ebeff0",
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: 5
     },
     elevation: 11,
     shadowRadius: 6.68,
-    shadowOpacity: 0.36,
+    shadowOpacity: 0.36
   },
   imageView: {
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: 'red',
-    resizeMode: 'cover',
+    backgroundColor: "red",
+    resizeMode: "cover"
   },
   nameText: {
     fontSize: 20,
-    fontStyle: 'italic',
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
+    fontStyle: "italic",
+    flexDirection: "row",
+    alignSelf: "flex-start"
   },
   mobileText: {
-    opacity: 0.7,
+    opacity: 0.7
   },
   mainView: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
+    flexDirection: "row",
+    justifyContent: "space-between"
+  }
 });
