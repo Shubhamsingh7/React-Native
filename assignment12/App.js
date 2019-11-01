@@ -1,114 +1,126 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
-  ScrollView,
   View,
-  Text,
   StatusBar,
+  Image,
+  Text,
+  FlatList,
+  TouchableOpacity,
 } from 'react-native';
+import ImagePicker from 'react-native-image-crop-picker';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+export default class MainView extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      imageLink: '',
+      isclicked: false,
+      isMultipleClicked: true,
+      ImageArray: [],
+    };
+  }
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
+  ImageNotClicked = () => {
+    if (!this.state.isclicked) {
+      return (
+        <Image
+          style={{height: 200, width: 200, borderRadius: 100}}
+          source={require('./blank-profile-picture-973460_1280.png')}
+        />
+      );
+    } else {
+      return <></>;
+    }
+  };
+  ImageClicked = () => {
+    if (this.state.isclicked) {
+      return (
+        <Image
+          style={{height: 200, width: 200, borderRadius: 100}}
+          source={{uri: this.state.imageLink}}
+        />
+      );
+    } else {
+      return <></>;
+    }
+  };
+  MultipleImageLoad = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+      multiple: true,
+    }).then(image => {
+      console.warn(image[0].path);
+      this.setState(() => {
+        return {
+          ImageArray: this.state.ImageArray.concat(image),
+          isMultipleclicked: true,
+        };
+      });
+    });
+  };
+  MultipleImage = () => {
+    if (this.state.isMultipleClicked) {
+      return (
+        <FlatList
+          data={this.state.ImageArray}
+          renderItem={({item}) => {
+            <Image
+              source={{uri: item.path}}
+              style={{height: 100, width: 100, margin: 20}}
+            />;
+          }}></FlatList>
+      );
+    } else {
+      return (
+        <>
+          <Text>dbjcdjbcbc</Text>
+        </>
+      );
+    }
+  };
+
+  Image = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+      this.setState(() => {
+        return {
+          imageLink: image.path,
+          isclicked: true,
+        };
+      });
+    });
+  };
+
+  render() {
+    return (
+      <>
+        <StatusBar />
+        <SafeAreaView>
+          <View>
+            {/* <TouchableOpacity onPress={() => this.Image()}>
+              <this.ImageNotClicked />
+              <this.ImageClicked />
+            </TouchableOpacity> */}
+            <TouchableOpacity
+              onPress={() => {
+                this.MultipleImageLoad();
+              }}>
+              <View>
+                <Text>select multiple image</Text>
+              </View>
+            </TouchableOpacity>
+            <this.MultipleImage />
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
-
-export default App;
+        </SafeAreaView>
+      </>
+    );
+  }
+}
