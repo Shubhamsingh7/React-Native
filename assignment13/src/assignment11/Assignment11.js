@@ -1,4 +1,5 @@
 import React from 'react';
+import {RNS3} from 'react-native-aws3';
 import {
   SafeAreaView,
   StyleSheet,
@@ -38,6 +39,14 @@ export default class Assignment11 extends React.Component {
   //       console.log(image);
   //     }
   // }
+
+  file = {
+    // `uri` can also be a file system path (i.e. file://)
+    uri: './third.png',
+    name: 'image.png',
+    type: 'image/png',
+  };
+
   render() {
     return (
       <View style={{flex: 1}}>

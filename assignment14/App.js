@@ -22,7 +22,6 @@ class Navigation extends Component {
     })
       .then(imageUrl => {
         this.setState({imageArray: imageUrl.path});
-        console.log('datahjasvxhja', this.state.imageArray.path);
       })
       .catch(e => {
         console.log(e);
@@ -37,6 +36,10 @@ class Navigation extends Component {
           <Text style={{fontSize: 20}}>First Name</Text>
           <TextInput
             onChangeText={fname => this.setState({fname})}
+            returnKeyType={'next'}
+            onSubmitEditing={() => {
+              this.secondInput.focus();
+            }}
             style={{
               fontSize: 15,
               height: 40,
@@ -51,7 +54,12 @@ class Navigation extends Component {
           <Text>{this.props.navigation.getParam('fname1')}</Text>
           <Text style={{fontSize: 20, marginTop: 20}}>Last Name</Text>
           <TextInput
+            ref={input => {
+              this.secondInput = input;
+            }}
+            placeholder="secondInput"
             onChangeText={lname => this.setState({lname})}
+            returnKeyType={'done'}
             style={{
               fontSize: 15,
               height: 40,

@@ -25,6 +25,7 @@ import Assignment09 from './assignment09/Assignment09';
 import Assignment10 from './assignment10/Assignment10';
 import Assignment11 from './assignment11/Assignment11';
 import Assignment12 from './assignment12/Assignment12';
+import Assignment14 from './assignment14/Assignment14';
 
 class MainView extends React.Component {
   static navigationOptions = {
@@ -43,235 +44,277 @@ class MainView extends React.Component {
       <>
         <StatusBar />
         <SafeAreaView style={{flex: 1}}>
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: '#dce8e7',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-            }}>
+          <ScrollView>
             <View
               style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
+                flex: 1,
+                backgroundColor: '#dce8e7',
+                justifyContent: 'space-around',
+                alignItems: 'center',
               }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment01')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment01
-                </Text>
-              </TouchableOpacity>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment01')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment01
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment02')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment02
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment03')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment03
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment04')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment04
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment05')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment05
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment06')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment06
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment07')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment07
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment08')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment08
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment09')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment09
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment10')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment10
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment11')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment11
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment12')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment12
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('Assignment14')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    assignment14
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment02')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment02
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment03')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment03
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment04')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment04
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment05')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment05
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment06')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment06
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment07')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment07
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment08')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment08
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment09')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment09
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment10')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment10
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment11')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment11
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment12')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Assignment12
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fff',
-                borderColor: '#000',
-                borderRadius: 30,
-              }}>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Assignment01')}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    padding: 10,
-                  }}>
-                  Navigate sequently
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+          </ScrollView>
         </SafeAreaView>
       </>
     );
@@ -293,6 +336,7 @@ const AppNavigator = createStackNavigator(
     Assignment10: Assignment10,
     Assignment11: Assignment11,
     Assignment12: Assignment12,
+    Assignment14: Assignment14,
   },
   {
     initialRouteName: 'Home',
