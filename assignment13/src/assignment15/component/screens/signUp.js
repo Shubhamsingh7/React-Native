@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import {
-  Platform,
-  StyleSheet,
   Text,
   View,
   StatusBar,
-  SafeAreaView,
-  TextInput,
-  ScrollView,
+  StyleSheet,
   TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
@@ -60,8 +56,6 @@ export default class SignUp extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    //     flex: 1,
-    //     height: '100%',
     justifyContent: 'space-around',
     alignItems: 'center',
     padding: 30,

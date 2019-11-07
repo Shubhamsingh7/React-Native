@@ -1,14 +1,20 @@
 import React from 'react';
 import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-community/google-signin';
+
+import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
   Image,
-  View,
   TouchableOpacity,
   Text,
   StatusBar,
+  ScrollView,
   Button,
+  View,
 } from 'react-native';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
@@ -31,8 +37,22 @@ import SignUp from './assignment15/component/screens/signUp';
 import SignUpDashboard from './assignment15/component/screens/signUPDashboard';
 import SplashScreens from './assignment15/component/screens/splashScreenes';
 import LoginDashBoard from './assignment15/component/screens/loginDashBoard';
+import Google from './assignment16/google';
+import LoginDash from './assignment16/loginDashboard';
 
 class MainView extends React.Component {
+  isSignedIn = async () => {
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    this.setState({isLoginScreenPresented: !isSignedIn});
+  };
+  constructor() {
+    super();
+    this.state = {
+      isLoginScreenPresented: true,
+    };
+    this.isSignedIn();
+  }
+
   static navigationOptions = {
     title: 'Home',
     headerBackTitle: 'pop',
@@ -338,6 +358,31 @@ class MainView extends React.Component {
                   </Text>
                 </TouchableOpacity>
               </View>
+
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (!this.state.isLoginScreenPresented) {
+                      this.props.navigation.navigate('LoginDash');
+                    } else {
+                      this.props.navigation.navigate('Google');
+                    }
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment 16 Login with google
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </ScrollView>
         </SafeAreaView>
@@ -367,6 +412,8 @@ const AppNavigator = createStackNavigator(
     SignUp: SignUp,
     SignUpDashboard: SignUpDashboard,
     LoginDashBoard: LoginDashBoard,
+    Google: Google,
+    LoginDash: LoginDash,
   },
   {
     initialRouteName: 'Home',
