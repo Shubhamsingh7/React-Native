@@ -26,6 +26,11 @@ import Assignment10 from './assignment10/Assignment10';
 import Assignment11 from './assignment11/Assignment11';
 import Assignment12 from './assignment12/Assignment12';
 import Assignment14 from './assignment14/Assignment14';
+import LoginScreen from './assignment15/component/screens/login';
+import SignUp from './assignment15/component/screens/signUp';
+import SignUpDashboard from './assignment15/component/screens/signUPDashboard';
+import SplashScreens from './assignment15/component/screens/splashScreenes';
+import LoginDashBoard from './assignment15/component/screens/loginDashBoard';
 
 class MainView extends React.Component {
   static navigationOptions = {
@@ -313,6 +318,26 @@ class MainView extends React.Component {
                   </Text>
                 </TouchableOpacity>
               </View>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  borderColor: '#000',
+                  borderRadius: 30,
+                  margin: 20,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('SplashScreens')
+                  }>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      padding: 10,
+                    }}>
+                    Assignment 15 Login
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </ScrollView>
         </SafeAreaView>
@@ -337,18 +362,15 @@ const AppNavigator = createStackNavigator(
     Assignment11: Assignment11,
     Assignment12: Assignment12,
     Assignment14: Assignment14,
+    SplashScreens: SplashScreens,
+    LoginScreen: LoginScreen,
+    SignUp: SignUp,
+    SignUpDashboard: SignUpDashboard,
+    LoginDashBoard: LoginDashBoard,
   },
   {
     initialRouteName: 'Home',
-    defaultNavigationOptions: {
-      headerRight: () => (
-        <Button
-          onPress={() => alert('This is a button!')}
-          title="next>"
-          color="#fff"
-        />
-      ),
-    },
+    // headerMode: 'none',
   },
 );
 export default createAppContainer(AppNavigator);
