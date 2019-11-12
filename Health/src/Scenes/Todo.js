@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: wp('5%'),
     borderWidth: wp('0.5%'),
-    //     padding: wp('5%'),
     paddingLeft: wp('5%'),
     paddingRight: wp('5%'),
     height: wp('10%'),
